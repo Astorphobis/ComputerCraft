@@ -8,6 +8,7 @@ Put both files ("startup" and "infstartup") to a new floppy disk, insert to your
 If you want to keep on developing "Ebola", here are some things #TODO
 
 - Show directories before the ">"
+
 If you change directory (cd command), unlike in original CraftOS Console, the path won't appear before the ">" symbol
 Let's cd into folder "rom"..
 ```
@@ -23,11 +24,13 @@ But "Ebola"'s will still display
 ```
 
 - Own ls output (ls, list, dir)
+
 Right now, these commands are blocked and won't display anything if written.
 But it would be really cool if it displayed all files except for "Ebola"'s ones!
 And ofcourse it'd have to change the "startup2" to "startup" (if it exists) and "startup3" to "startup"
 
 - Modified text editor
+
 If you enter
 ```
 > edit startup
