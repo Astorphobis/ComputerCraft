@@ -1,0 +1,29 @@
+--"Ebola Control" app by Astorphobis - (c) 2015-2016--
+function setbottomm()
+ rednet.open("bottom")
+end
+function settopm()
+ rednet.open("top")
+end
+function setleftm()
+ rednet.open("left")
+end
+function setrightm()
+ rednet.open("right")
+end
+function setfrontm()
+ rednet.open("front")
+end
+function setbackm()
+ rednet.open("back")
+end
+local status, err = pcall(setbottomm)
+local status, err = pcall(settopm)
+local status, err = pcall(setleftm)
+local status, err = pcall(setrightm)
+local status, err = pcall(setfrontm)
+local status, err = pcall(setbackm)
+while true do
+ local command = read()
+ rednet.broadcast(command)
+end
