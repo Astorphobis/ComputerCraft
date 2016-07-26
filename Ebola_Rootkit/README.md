@@ -13,7 +13,7 @@ Let's cd into folder "rom"..
 ```
 > cd rom
 ```
-Normal CraftOS' consoe will display
+Normal CraftOS' console will display
 ```
 rom> 
 ```
