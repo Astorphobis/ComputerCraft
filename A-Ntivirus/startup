@@ -1,0 +1,69 @@
+function searchInFile(path, stringtolookfor)
+ local h = fs.open(path, "r")
+ local fileContains = h.readAll()
+ local searchForString = string.find(fileContains, stringtolookfor)
+ if searchForString > 0 then
+  return true
+ else
+  return false
+ end
+end
+function setWhite()
+ if term.isColor() then
+  term.setTextColor(colors.white)
+ end
+end
+function setYellow()
+ if term.isColor() then
+  term.setTextColor(colors.yellow)
+ end
+end
+function setRed()
+ if term.isColor() then
+  term.setTextColor(colors.red)
+ end
+end
+function scandisk()
+ while true do
+  if fs.exists("disk/startup") and searchInFile("disk/startup","startup")==true then
+   setRed()
+   print("WARNING! The disk you just inserted is modifying your startup!")
+   setWhite()
+   os.sleep(1)
+  end
+ end
+end
+function console()
+ local oldPull = os.pullevent
+ local editstartup = "edit startup"
+ term.clear()
+ term.setCursorPos(1,1)
+ setYellow()
+ term.write("CraftOS 1.5 running Astor's AV")
+ term.setCursorPos(1,2)
+ while true do
+  os.pullEvent = os.pullEventRaw
+  local cursorx, cursory = term.getCursorPos()
+  setYellow()
+  term.write("> ")
+  setWhite()
+  term.setCursorPos(3, cursory)
+  local command = read()
+  if command==editstartup then
+   print("The AV is read-only")
+  else
+   if fs.exists(command)
+    if searchInFile(command, "startup")==true then
+	 print("This file is modifying your startup file! Type "Yes" to run it.")
+	 local runapp = read()
+	 if runapp=="yes" or runapp=="Yes" then
+	  shell.run(command)
+	 end
+	end
+   else
+    shell.run(command)
+   end
+  end
+ end
+end
+parallel.waitForAll(scandisk,console)
