@@ -1,11 +1,11 @@
-#"Ebola" Rootkit
+# "Ebola" Rootkit
 This is my unfinished rootkit for CC (although everything already written should work without any problems, I still have lots of ideas, but I'm not interested in CC anymore.)
-##How to install
+## How to install
 You can rewrite these files to CC, or download them (if you have HTTP api enabled) from your CC Computer.
 Put both files ("startup" and "infstartup") to a new floppy disk, insert to your victim's PC, reboot and let the magic happen =)
 **If the version of CraftOS on your victim's PC isn't 1.5, don't forget to change it!**
-##Unfinished stuff
-If you want to keep on developing "Ebola", here are some things #TODO
+## Unfinished stuff
+If you want to keep on developing "Ebola", here are some unfinished things. Also, please upload the changes here.
 
 - Show directories before the ">"
 
@@ -23,7 +23,7 @@ But "Ebola"'s will still display
 > 
 ```
 
-- Own ls output (ls, list, dir)
+- Custom ls output (ls, list, dir)
 
 Right now, these commands are blocked and won't display anything if written.
 But it would be really cool if it displayed all files except for "Ebola"'s ones!
